@@ -1,0 +1,21 @@
+In best_hospital.sql, I created multiple intermediate tables to aggregate data together before figuring the best hospital data:
+1) create hospital_score by joining 2 tables hospital and effective_care2 (the transformed version of effective_care) to get 
+provider id, hospital name, state and covert score to integer from string
+2) Using hospital_score, I create hospital_aggr_score to get sum of score and avg of score
+3) Using hospital_aggr_score and hospital_score, I create hospital_aggr_var_score to calculate the variability (= variance).
+This table will also be used for subsequent sql 
+4) Create best_hospital by picking the top 10 avg_score from hospital_aggr_var_score
+
+Here is the top 10 hospital:
+id   	Hospital Name				Total score	Avg score	Variability
+---	--------------				-----------	-----------	---------
+450348	FALLS COMMUNITY HOSPITAL AND CLINIC	2827	235.58333333333334	170417.07638888888
+051335	BEAR VALLEY COMMUNITY HOSPITAL		526	175.33333333333334	16417.55555555556
+400079	HOSP COMUNITARIO BUEN SAMARITANO	2676	167.25			55088.6875
+451330	MEDINA REGIONAL HOSPITAL		408	136.0			5928.0
+310002	NEWARK BETH ISRAEL MEDICAL CENTER	5123	134.81578947368422	38289.30817174516
+051318	REDWOOD MEMORIAL HOSPITAL		782	130.33333333333334	7996.222222222223
+400032	HOSPITAL HERMANOS MELENDEZ INC		2474	130.21052631578948	19353.639889196667
+261317	MERCY HOSPITAL CASSVILLE		512	128.0			5510.0
+331316	COMMUNITY MEMORIAL HOSPITAL, INC	1149	127.66666666666667	4312.444444444444
+511313	BOONE MEMORIAL HOSPITAL	     		752	125.33333333333333	8040.888888888891
