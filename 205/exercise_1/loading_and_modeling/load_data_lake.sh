@@ -8,7 +8,7 @@ mv hvbp_hcahps_05_28_2015.csv surveys_responses.csv
 
 # From my AWS machine, as w205 user, I created a new directory /home/w205/hospital_compare
 # Then, from my local machine, I  push them to my new AWS machine
-
+scp  -i "/Users/thongbui/Desktop/MIDS/205_storage_retrieval/ucb4.pem" procedures.csv root@ec2-54-172-195-106.compute-1.amazonaws.com:/home/w205/hospital_compare/ 
 scp  -i "/Users/thongbui/Desktop/MIDS/205_storage_retrieval/ucb4.pem" effective_care.csv root@ec2-54-172-195-106.compute-1.amazonaws.com:/home/w205/hospital_compare/ 
 scp  -i "/Users/thongbui/Desktop/MIDS/205_storage_retrieval/ucb4.pem" hospitals.csv root@ec2-54-172-195-106.compute-1.amazonaws.com:/home/w205/hospital_compare/ 
 scp  -i "/Users/thongbui/Desktop/MIDS/205_storage_retrieval/ucb4.pem" measures.csv root@ec2-54-172-195-106.compute-1.amazonaws.com:/home/w205/hospital_compare/ 

@@ -1,21 +1,40 @@
+drop table procedure; 
+CREATE EXTERNAL TABLE procedure(
+ProviderID varchar(45),
+	    HospitalName varchar(45),
+	    MeasureID varchar(45),
+	    Gastrointestinal varchar(45),
+	    Eye varchar(45),
+	    NervousSystem varchar(45),
+	    Musculoskeletal varchar(45),
+	    Skin varchar(45),
+	    Genitourinary varchar(45),
+	    Cardiovascular varchar(45),
+	    StartDate varchar(45),
+	    EndDate
+ varchar(45)) ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.OpenCSVSerde' WITH SERDEPROPERTIES (
+"separatorChar" = ",", "quoteChar" = '"',"escapeChar" = '\\' )
+STORED AS TEXTFILE
+LOCATION '/user/w205/hospital_compare/procedures';
+
 drop table effective_care;
 CREATE EXTERNAL TABLE effective_care (
-       Provider_ID varchar(11),
-       Hospital_Name varchar(45),
+       ProviderID varchar(11),
+       HospitalName varchar(45),
        Address varchar(45),
 	City varchar(45),
 	State varchar(45),
-	ZIP_Code varchar(45),
-	County_Name varchar(45),
-	Phone_Number varchar(45),
+	ZIPCode varchar(45),
+	CountyName varchar(45),
+	PhoneNumber varchar(45),
 	Condition varchar(45),
-	Measure_ID varchar(45),
-	Measure_Name varchar(45),
+	MeasureID varchar(45),
+	MeasureName varchar(45),
 	Score varchar(45),
 	Sample varchar(45),
 	Footnote varchar(45),
-	Measure_Start_Date varchar(45),
-	Measure_End_Date  varchar(45)
+	MeasureStartDate varchar(45),
+	MeasureEndDate  varchar(45)
 ) ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.OpenCSVSerde' WITH SERDEPROPERTIES (
 "separatorChar" = ",", "quoteChar" = '"',"escapeChar" = '\\' )
 STORED AS TEXTFILE
