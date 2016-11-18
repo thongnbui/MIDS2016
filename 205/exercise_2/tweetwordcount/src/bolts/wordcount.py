@@ -33,14 +33,10 @@ class WordCounter(Bolt):
         # Table name: Tweetwordcount 
         # you need to create both the database and the table in advance.
         ################# For now, just count the rows
-#        cursor.execute("SELECT count(*) from Tweetwordcount")
-#        records = cursor.fetchall()
- #       for rec in records:
-#            self.log( "count = %d" % rec[0])
 
-        self.log("********* (%s,%d)" % (word,self.counts[word]))
-        if (self.counts[word] == 0):
-            #Insert
+        # Increment the local count
+        self.counts[word] += 1
+        if (self.counts[word] == 1):
             self.log("********Inserting postgres(%s, %s)" % (word,self.counts[word]))
             cursor.execute("INSERT INTO Tweetwordcount (word,count) VALUES (%s, %s)", (word,self.counts[word]))
         else:
@@ -51,8 +47,6 @@ class WordCounter(Bolt):
         conn.close()
 
 
-        # Increment the local count
-        self.counts[word] += 1
         self.emit([word, self.counts[word]])
 
         # Log the count - just to see the topology running
