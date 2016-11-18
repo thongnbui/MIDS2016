@@ -1,4 +1,4 @@
-This directory contains:
+This exercise 2 contains:
 1) the main Storm application tweetwordcount that counts the words from Twitter and stores result in local Postgres table. Here are the steps:
    - clone the repo:
    git clone https://github.com/thongnbui/MIDS2016
